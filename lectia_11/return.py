@@ -1,75 +1,68 @@
-print("🔢 EXERCIȚIUL 1: CALCULATOR AVANSAT")
+print("📊 EXERCIȚIUL 2: ANALIZATORUL DE TEXT")
 print("=" * 40)
 
-def adunare(a, b):
-    """Adună două numere"""
-    return a + b
+def numara_cuvinte(text):
+    """Numără cuvintele dintr-un text"""
+    return len(text.split())
 
-def scadere(a, b):
-    """Scade două numere"""
-    return a - b
+def numara_caractere(text, include_spatii=True):
+    """Numără caracterele dintr-un text"""
+    if include_spatii:
+        return len(text)
+    else:
+        return len(text.replace(' ', ''))
 
-def inmultire(a, b):
-    """Înmulțește două numere"""
-    return a * b
+def numara_vocale(text):
+    """Numără vocalele dintr-un text"""
+    vocale = "aeiouAEIOU"
+    return sum(1 for char in text if char in vocale)
 
-def impartire(a, b):
-    """Împarte două numere cu validare"""
-    if b == 0:
-        return "Eroare: Împărțire la zero!"
-    return a / b
+def numara_consoane(text):
+    """Numără consoanele dintr-un text"""
+    return sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
 
-def putere(a, b):
-    """Ridică un număr la o putere"""
-    return a ** b
+def gaseste_cuvant_cel_mai_lung(text):
+    """Găsește cel mai lung cuvânt din text"""
+    cuvinte = text.split()
+    if not cuvinte:
+        return ""
+    return max(cuvinte, key=len)
 
-def modulo(a, b):
-    """Calculează restul împărțirii"""
-    if b == 0:
-        return "Eroare: Împărțire la zero!"
-    return a % b
+def inverseaza_cuvinte(text):
+    """Inversează ordinea cuvintelor în text"""
+    return ' '.join(text.split()[::-1])
 
-def calculator(operatie, a, b):
+def analizeaza_text_complet(text):
     """
-    Calculator universal care folosește funcțiile de mai sus
+    Analizează complet un text folosind toate funcțiile de mai sus
     
     Args:
-        operatie: operația de efectuat ('+', '-', '*', '/', '**', '%')
-        a, b: numerele de calculat
+        text: textul de analizat
     
     Returns:
-        Rezultatul operației sau mesaj de eroare
+        Dicționar cu toate statisticile
     """
-    operatii = {
-        '+': adunare,
-        '-': scadere,
-        '*': inmultire,
-        '/': impartire,
-        '**': putere,
-        '%': modulo
+    return {
+        'text_original': text,
+        'numar_cuvinte': numara_cuvinte(text),
+        'numar_caractere_cu_spatii': numara_caractere(text),
+        'numar_caractere_fara_spatii': numara_caractere(text, False),
+        'numar_vocale': numara_vocale(text),
+        'numar_consoane': numara_consoane(text),
+        'cuvant_cel_mai_lung': gaseste_cuvant_cel_mai_lung(text),
+        'text_inversat': inverseaza_cuvinte(text)
     }
-    
-    if operatie in operatii:
-        return operatii[operatie](a, b)
-    else:
-        return f"Operația '{operatie}' nu este suportată"
 
+# Testarea analizatorului
+text_exemplu = "Python este un limbaj de programare fantastic"
+analiza = analizeaza_text_complet(text_exemplu)
 
-
-
-# Testarea calculatorului
-teste_calculator = [
-    ('+', 10, 5),
-    ('-', 10, 3),
-    ('*', 4, 7),
-    ('/', 15, 3),
-    ('/', 10, 0),
-    ('**', 2, 8),
-    ('%', 17, 5),
-    ('&', 5, 3)  # Operație invalidă
-]
-
-print("Testarea calculatorului:")
-for op, num1, num2 in teste_calculator:
-    rezultat = calculator(op, num1, num2)
-    print(f"  {num1} {op} {num2} = {rezultat}")
+print("Analiza completă a textului:")
+print(f"Text original: '{analiza['text_original']}'")
+print(f"Număr cuvinte: {analiza['numar_cuvinte']}")
+print(f"Caractere cu spații: {analiza['numar_caractere_cu_spatii']}")
+print(f"Caractere fără spații: {analiza['numar_caractere_fara_spatii']}")
+print(f"Vocale: {analiza['numar_vocale']}")
+print(f"Consoane: {analiza['numar_consoane']}")
+print(f"Cel mai lung cuvânt: '{analiza['cuvant_cel_mai_lung']}'")
+print(f"Text cu cuvinte inversate: '{analiza['text_inversat']}'")
