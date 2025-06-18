@@ -1,34 +1,42 @@
+print("🎯 TIPURI DE FUNCȚII DUPĂ INPUT/OUTPUT")
+print("=" * 45)
 
+# 1. Funcție fără parametri, fără return
+def saluta():
+    """Funcție simplă care doar afișează un mesaj"""
+    print("Bună ziua! Bine ați venit!")
 
-# Funcția ca o "cutie neagră" care procesează date
-"""
-    INPUT (Parametri/Argumente)
-           ↓
-    ┌─────────────────┐
-    │   FUNCȚIA f:    │  ← Procesarea datelor
-    │   (logica)      │
-    └─────────────────┘
-           ↓
-    OUTPUT f(x) (Valoarea returnată)
-"""
+# 2. Funcție cu parametri, fără return
+def afiseaza_info(nume, varsta):
+    """Funcție care primește date dar nu returnează nimic"""
+    print(f"Numele: {nume}")
+    print(f"Vârsta: {varsta} ani")
+                
 
-def proceseaza_numere(a, b):
-    """
-    Primește două numere ca INPUT
-    Procesează datele (le adună și le înmulțește cu 2)
-    Returnează rezultatul ca OUTPUT
-    """
-    suma = a + b
-    rezultat = suma * 2
-    return rezultat
+# 3. Funcție fără parametri, cu return
+def obtine_data_curenta():
+    """Funcție care returnează o valoare fără să primească parametri"""
+    from datetime import datetime
+    return datetime.now().strftime("%Y-%m-%d")
 
-# Demonstrarea fluxului
-print("INPUT: a=5, b=3")
-output = proceseaza_numere(5, 3)
-print(f"OUTPUT: {output}")
+# 4. Funcție cu parametri și cu return
+def calculeaza_arie_cerc(raza):
+    """Funcție completă: primește input și returnează output"""
+    import math
+    arie = math.pi * raza ** 2
+    return arie
 
-print(f"\n🔍 PROCESUL PAS CU PAS:")
-print(f"1. INPUT: a=5, b=3")
-print(f"2. PROCESARE: suma = 5 + 3 = 8")
-print(f"3. PROCESARE: rezultat = 8 * 2 = 16")
-print(f"4. OUTPUT: return 16")
+# Demonstrații
+print("1. Funcție fără parametri, fără return:")
+saluta()
+
+print("\n2. Funcție cu parametri, fără return:")
+afiseaza_info("Ana", 25)
+
+print("\n3. Funcție fără parametri, cu return:")
+data = obtine_data_curenta()
+print(f"Data curentă: {data}")
+
+print("\n4. Funcție cu parametri și cu return:")
+arie = calculeaza_arie_cerc(5)
+print(f"Aria cercului cu raza 5: {arie:.2f}")
