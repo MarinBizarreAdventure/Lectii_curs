@@ -26,7 +26,7 @@ def impartire_sigura(a, b):
 
 # Demonstrații
 print("1. Return condiționat:")
-print(f"5 este {verifica_paritate(5)}")
+print(f"7 este {verifica_paritate(7)}")
 print(f"6 este {verifica_paritate(6)}")
 
 print("\n2. Return multiple:")
