@@ -33,9 +33,7 @@ print("\n2. Return multiple:")
 s, d, p = calcule_matematice(10, 3)
 print(f"Suma: {s}, Diferența: {d}, Produsul: {p}")
 
-print("\n3. Return early (validare):")
-print(f"10 / 2 = {impartire_sigura(10, 2)}")
-print(f"10 / 0 = {impartire_sigura(10, 0)}")
+
 
 print("\n4. Funcție fără return explicit:")
 def fara_return():
