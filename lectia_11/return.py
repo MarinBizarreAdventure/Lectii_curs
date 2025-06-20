@@ -1,68 +1,45 @@
-print("📊 EXERCIȚIUL 2: ANALIZATORUL DE TEXT")
-print("=" * 40)
+print("🔄 TIPURI DE RETURN STATEMENTS")
+print("=" * 35)
 
-def numara_cuvinte(text):
-    """Numără cuvintele dintr-un text"""
-    return len(text.split())
-
-def numara_caractere(text, include_spatii=True):
-    """Numără caracterele dintr-un text"""
-    if include_spatii:
-        return len(text)
+# Return condiționat
+def verifica_paritate(numar):
+    """Returnează diferite valori în funcție de condiții"""
+    if numar % 2 == 0:
+        return "par"
     else:
-        return len(text.replace(' ', ''))
+        return "impar"
 
-def numara_vocale(text):
-    """Numără vocalele dintr-un text"""
-    vocale = "aeiouAEIOU"
-    return sum(1 for char in text if char in vocale)
+# Return multiple în aceeași linie
+def calcule_matematice(a, b):
+    """Returnează multiple valori ca tuplu"""
+    suma = a + b
+    diferenta = a - b
+    produs = a * b
+    return suma, diferenta, produs  # Returnează tuplu
 
-def numara_consoane(text):
-    """Numără consoanele dintr-un text"""
-    return sum(1 for char in text if char.isalpha() and char not in "aeiouAEIOU")
+# Return early pentru validare
+def impartire_sigura(a, b):
+    """Returnează rezultatul împărțirii cu validare"""
+    if b == 0:
+        return "Eroare: Împărțire la zero!"
+    return a / b
 
-def gaseste_cuvant_cel_mai_lung(text):
-    """Găsește cel mai lung cuvânt din text"""
-    cuvinte = text.split()
-    if not cuvinte:
-        return ""
-    return max(cuvinte, key=len)
+# Demonstrații
+print("1. Return condiționat:")
+print(f"5 este {verifica_paritate(5)}")
+print(f"6 este {verifica_paritate(6)}")
 
-def inverseaza_cuvinte(text):
-    """Inversează ordinea cuvintelor în text"""
-    return ' '.join(text.split()[::-1])
+print("\n2. Return multiple:")
+s, d, p = calcule_matematice(10, 3)
+print(f"Suma: {s}, Diferența: {d}, Produsul: {p}")
 
-def analizeaza_text_complet(text):
-    """
-    Analizează complet un text folosind toate funcțiile de mai sus
-    
-    Args:
-        text: textul de analizat
-    
-    Returns:
-        Dicționar cu toate statisticile
-    """
-    return {
-        'text_original': text,
-        'numar_cuvinte': numara_cuvinte(text),
-        'numar_caractere_cu_spatii': numara_caractere(text),
-        'numar_caractere_fara_spatii': numara_caractere(text, False),
-        'numar_vocale': numara_vocale(text),
-        'numar_consoane': numara_consoane(text),
-        'cuvant_cel_mai_lung': gaseste_cuvant_cel_mai_lung(text),
-        'text_inversat': inverseaza_cuvinte(text)
-    }
+print("\n3. Return early (validare):")
+print(f"10 / 2 = {impartire_sigura(10, 2)}")
+print(f"10 / 0 = {impartire_sigura(10, 0)}")
 
-# Testarea analizatorului
-text_exemplu = "Python este un limbaj de programare fantastic"
-analiza = analizeaza_text_complet(text_exemplu)
+print("\n4. Funcție fără return explicit:")
+def fara_return():
+    x = 5 + 5
 
-print("Analiza completă a textului:")
-print(f"Text original: '{analiza['text_original']}'")
-print(f"Număr cuvinte: {analiza['numar_cuvinte']}")
-print(f"Caractere cu spații: {analiza['numar_caractere_cu_spatii']}")
-print(f"Caractere fără spații: {analiza['numar_caractere_fara_spatii']}")
-print(f"Vocale: {analiza['numar_vocale']}")
-print(f"Consoane: {analiza['numar_consoane']}")
-print(f"Cel mai lung cuvânt: '{analiza['cuvant_cel_mai_lung']}'")
-print(f"Text cu cuvinte inversate: '{analiza['text_inversat']}'")
+rezultat_none = fara_return()
+print(f"Funcția fără return returnează: {rezultat_none}")
