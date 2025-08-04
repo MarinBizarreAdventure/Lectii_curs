@@ -1,0 +1,13 @@
+{
+    "adresa":{
+        "cod_postal":"400000",
+        "oras":"Cluj-Napoca"
+    },
+    "casatorit":true,
+    "copii":[
+        "Ana",
+        "Mihai"
+    ],
+    "nume":"Ion Marinescu",
+    "varsta":35
+}

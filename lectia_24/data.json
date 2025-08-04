@@ -1,0 +1,9 @@
+{
+    "nume": "marin",
+    "varsta": 22,
+    "oras": "chisinau",
+    "hobby_uri": [
+        "programare",
+        "gym"
+    ]
+}
